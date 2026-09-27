@@ -8,8 +8,8 @@ no billing, no referral link, no model and no provider.
 
 ## What it does
 
-A lead scout for one product. RedReplier watches Reddit, Hacker News, X and
-Bluesky for the keywords you choose and scores every mention 0 to 100
+A lead scout for one product. RedReplier watches Reddit, Hacker News, X,
+Bluesky and Facebook for the keywords you choose and scores every mention 0 to 100
 against your product description. This agent reads those mentions, keeps the
 real buying conversations, explains why each one is a lead, and drafts a
 reply in your voice that discloses you make the product. It never posts: you
@@ -74,7 +74,9 @@ The key has no scopes. It carries the workspace role you pick when you
 create it, can never do more than the member who created it, and reaches
 every website in that workspace. Create a key for this agent only, so you
 can revoke it on its own. If its creator leaves the workspace, the key stops
-working and the agent asks for a new one.
+working and the agent asks for a new one. If the organization's plan stops
+including API access, every call answers 403 `subscription_required` until the
+plan is renewed.
 
 **On demand.** Don't set anything up first. When the agent finds RedReplier
 unauthenticated it asks you to connect it and shows the gateway's connect

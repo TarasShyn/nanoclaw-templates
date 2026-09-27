@@ -9,11 +9,15 @@ Read this only when the connection fails.
 - The `mcp__redreplier__*` tools are missing from your tool list, or a call
   returns 401, "Authentication required" or "not connected": no key is
   stored for `mcp.redreplier.com` yet, or the stored one was revoked.
-- A call returns 401 with `token_issuer_lost_access`: the member who created
-  the key left the workspace or was deactivated. The key is dead.
-- A call returns 403 with `permission_denied`: the key's role cannot use
-  RedReplier. Only Editor and Admin keys can; a Contributor or Viewer key is
-  refused on every call. The user needs a new key with the Editor role.
+- A call fails with a message saying the member who created the key lost
+  access to the workspace (401 `token_issuer_lost_access`): the creator left
+  the workspace, was deactivated, or was moved to a role that cannot use
+  RedReplier (only Editor and Admin can). The key is dead; the user needs a
+  new key from a current Editor or Admin, with the Editor role.
+- A call fails with a message saying the plan does not include API access
+  (403 `subscription_required`): the organization's plan lapsed or does not
+  cover the API. A new key will not help; the plan must be renewed in
+  RedReplier. Tell the user and stop.
 - A call returns 429: rate limited (600 requests a minute per key). Wait for
   `Retry-After` seconds; do not loop.
 

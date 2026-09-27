@@ -1,6 +1,6 @@
 ---
 name: redreplier
-description: Find and triage leads from public conversations on Reddit, Hacker News, X (Twitter) and Bluesky through RedReplier, which matches the user's keywords and scores every mention 0-100 for relevance. Use this skill WHENEVER the user asks about new mentions or leads, wants the best conversations to reply to, asks why a mention scored high or low, wants a reply drafted for a thread, wants to approve or reject mentions, add or change the websites and keywords RedReplier watches, or set mention email alerts. Trigger it even for short asks like "any new leads?", "what are people saying about us on Reddit", "draft a reply to that HN thread", "add the keyword 'hubspot alternative'" or "stop tracking that keyword".
+description: Find and triage leads from public conversations on Reddit, Hacker News, X (Twitter), Bluesky and Facebook through RedReplier, which matches the user's keywords and scores every mention 0-100 for relevance. Use this skill WHENEVER the user asks about new mentions or leads, wants the best conversations to reply to, asks why a mention scored high or low, wants a reply drafted for a thread, wants to approve or reject mentions, add or change the websites and keywords RedReplier watches, or set mention email alerts. Trigger it even for short asks like "any new leads?", "what are people saying about us on Reddit", "draft a reply to that HN thread", "add the keyword 'hubspot alternative'" or "stop tracking that keyword".
 ---
 
 # RedReplier
@@ -42,7 +42,9 @@ raw key in chat.
 Defaults hide rows. REJECTED mentions are left out unless `statuses` names
 them, and mentions under the website's minimum score (30 unless changed)
 are hidden unless `includeLowRelevance` is true. If the user asks where a
-mention went, check both.
+mention went, check both. `minScore` (0-100) narrows further: it keeps
+mentions scoring at least that much, drops unscored ones, and does not lift
+the website minimum on its own.
 
 ## Triage
 
