@@ -15,6 +15,9 @@ Read this only when the connection fails.
   too small for that action. See the role table in `SKILL.md`. Not a
   credential problem, so do not ask for a new key unless the user wants a
   bigger role.
+- A call returns 403 with `subscription_required`: the organization's plan
+  does not include API access or has lapsed. Every call fails the same way.
+  Not a credential problem either; the user has to renew the plan.
 - A call returns 429: rate limited (600 requests a minute per key). Wait for
   `Retry-After` seconds; do not loop.
 
