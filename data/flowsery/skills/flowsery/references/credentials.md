@@ -14,6 +14,11 @@ this only when the connection fails.
 - A call returns 403 with `permission_denied`: the key's role cannot use
   Flowsery. A workspace key needs the Editor or Admin role; Contributor and
   Viewer keys are refused. The user needs a new key with the Editor role.
+- A call returns 403 with `subscription_required`: the workspace plan no
+  longer includes API access. A new key will not help; the plan has to be
+  renewed.
+- A call returns 403 with `workspace_access_denied`: a `workspaceId` other
+  than the key's own workspace was passed. Leave `workspaceId` out.
 - "Website ID or domain is required": call `list_websites` and pass
   `websiteId` or `domain`. Not a credential problem.
 - A call returns 429: rate limited (600 requests a minute per key). Wait for

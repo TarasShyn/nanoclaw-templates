@@ -1,6 +1,6 @@
 # Writes
 
-Four tools change data. None of them charges a customer, moves money or
+Five tools change data. None of them charges a customer, moves money or
 touches a payment provider.
 
 ## Issue status (`update_issue_status`)

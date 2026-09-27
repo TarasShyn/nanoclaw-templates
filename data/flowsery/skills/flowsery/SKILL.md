@@ -33,7 +33,8 @@ raw key in chat.
 ## Every session starts the same way
 
 1. `list_websites`. A workspace key reaches every site in the workspace, and
-   every other tool needs `websiteId` or `domain` from this list.
+   every other tool needs `websiteId` or `domain` from this list. The key
+   belongs to one workspace, so leave `workspaceId` out.
 2. `get_metadata` for the site in question, to learn its timezone and
    currency. Pass that timezone to date-range tools.
 
@@ -51,7 +52,7 @@ raw key in chat.
   the same rows as `get_breakdown` for their dimension. Use `get_breakdown`
   for dimensions with no named tool: `entry_page`, `exit_link`,
   `browser_version`, `os_version`, `utm_source`, `utm_medium`, `utm_term`,
-  `utm_content`, `ref`, `source`, `all_params`.
+  `utm_content`, `ref`, `source`, `via`, `all_params`.
 - **Channels first, then sources.** `get_channels` gives the traffic mix;
   drill into `get_referrers` or `get_campaigns` from there.
 - **Revenue** comes from connected payment providers (Stripe, LemonSqueezy,
@@ -65,7 +66,7 @@ raw key in chat.
 Issues are problems Flowsery's AI found while watching session recordings,
 deduplicated across sessions and ranked by severity.
 
-1. `list_issues` for the open ones. Re-rank by `sessionsAffected` when the
+1. `list_issues` for the open ones. Re-rank by `sessionsCount` when the
    user cares about impact over severity.
 2. `get_issue` only for the few you report on: it returns occurrences, steps
    to replicate and linked tickets.
@@ -74,8 +75,9 @@ deduplicated across sessions and ranked by severity.
 
 `update_issue_status` is reversible, but the states mean different things:
 **resolved** says the bug is fixed; **suspended** says it never mattered.
-Ask which one the user means. On a free trial, issues beyond the first ten
-return "Upgrade to view this issue"; say so plainly.
+Ask which one the user means. On a free trial only the first ten issues are
+listed, and any other issue returns "Upgrade to view this issue"; say so
+plainly.
 
 ## Personal data
 

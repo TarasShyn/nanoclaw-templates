@@ -74,7 +74,8 @@ The key has no scopes. A workspace key reaches every website in the
 workspace, carries the role you pick when you create it, and can never do
 more than the member who created it. Create a key for this agent only, so
 you can revoke it on its own. If its creator leaves the workspace, the key
-stops working and the agent asks for a new one.
+stops working and the agent asks for a new one. If the workspace plan
+lapses, the key answers 403 `subscription_required` until the plan is renewed.
 
 **On demand.** Don't set anything up first. When the agent finds Flowsery
 unauthenticated it asks you to connect it and shows the gateway's connect
